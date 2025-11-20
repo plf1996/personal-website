@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Twitter, Youtube, BookOpen, Briefcase, Heart } from 'lucide-react'
 
