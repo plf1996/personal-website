@@ -1,87 +1,108 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Twitter, Youtube, BookOpen, Briefcase, Heart } from 'lucide-react'
+import { ExternalLink, Github, Twitter, Youtube, BookOpen, Briefcase, Heart, MessageSquare, Database } from 'lucide-react'
 
 const Links = () => {
   const linkCategories = [
     {
-      title: '社交媒体',
+      title: 'AI & 技术社区',
+      icon: <Github className="h-5 w-5" />,
+      links: [
+        {
+          name: 'GitHub',
+          description: 'AI/LLM 相关开源项目和实验代码',
+          url: 'https://github.com/yourusername',
+          icon: <Github className="h-6 w-6" />,
+          color: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+        },
+        {
+          name: 'Hugging Face',
+          description: '分享模型、数据集和 AI 应用',
+          url: 'https://huggingface.co/yourusername',
+          icon: <Heart className="h-6 w-6" />,
+          color: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400'
+        },
+        {
+          name: 'arXiv',
+          description: '学术论文和研究方向',
+          url: 'https://arxiv.org/a/yourusername',
+          icon: <BookOpen className="h-6 w-6" />,
+          color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400'
+        }
+      ]
+    },
+    {
+      title: '技术博客',
+      icon: <BookOpen className="h-5 w-5" />,
+      links: [
+        {
+          name: '技术博客',
+          description: 'LLM 应用开发实践与思考',
+          url: 'https://blog.yourwebsite.com',
+          icon: <BookOpen className="h-6 w-6" />,
+          color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
+        },
+        {
+          name: '掘金专栏',
+          description: '中文技术文章分享',
+          url: 'https://juejin.cn/user/yourid',
+          icon: <Briefcase className="h-6 w-6" />,
+          color: 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+        }
+      ]
+    },
+    {
+      title: '社交平台',
       icon: <Twitter className="h-5 w-5" />,
       links: [
         {
           name: 'Twitter',
-          description: '关注我的最新动态和技术分享',
+          description: 'AI 技术动态和行业洞察',
           url: 'https://twitter.com/yourusername',
           icon: <Twitter className="h-6 w-6" />,
           color: 'bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400'
         },
         {
           name: 'LinkedIn',
-          description: '专业的职场社交和职业经历',
+          description: '职业背景和项目经历',
           url: 'https://linkedin.com/in/yourusername',
           icon: <Briefcase className="h-6 w-6" />,
           color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-        }
-      ]
-    },
-    {
-      title: '代码与项目',
-      icon: <Github className="h-5 w-5" />,
-      links: [
-        {
-          name: 'GitHub',
-          description: '我的开源项目和代码贡献',
-          url: 'https://github.com/yourusername',
-          icon: <Github className="h-6 w-6" />,
-          color: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
         },
         {
-          name: '个人博客',
-          description: '技术文章和学习心得分享',
-          url: 'https://blog.yourwebsite.com',
-          icon: <BookOpen className="h-6 w-6" />,
-          color: 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+          name: '知乎',
+          description: '中文社区的技术分享',
+          url: 'https://zhihu.com/people/yourid',
+          icon: <MessageSquare className="h-6 w-6" />,
+          color: 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
         }
       ]
     },
     {
-      title: '作品展示',
+      title: '项目展示',
       icon: <ExternalLink className="h-5 w-5" />,
       links: [
         {
-          name: '项目作品集',
-          description: '精选项目展示和案例研究',
-          url: 'https://portfolio.yourwebsite.com',
-          icon: <Briefcase className="h-6 w-6" />,
+          name: 'AI 聊天助手',
+          description: '基于 LLM 的智能对话系统',
+          url: 'https://chat.example.com',
+          icon: <MessageSquare className="h-6 w-6" />,
           color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400'
         },
         {
-          name: 'YouTube频道',
-          description: '技术教程和编程分享视频',
-          url: 'https://youtube.com/yourchannel',
-          icon: <Youtube className="h-6 w-6" />,
-          color: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
-        }
-      ]
-    },
-    {
-      title: '其他兴趣',
-      icon: <Heart className="h-5 w-5" />,
-      links: [
-        {
-          name: '摄影作品',
-          description: '记录生活美好瞬间',
-          url: 'https://photos.yourwebsite.com',
-          icon: <Heart className="h-6 w-6" />,
-          color: 'bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400'
+          name: 'RAG 知识库',
+          description: '企业级检索增强生成系统',
+          url: 'https://rag.example.com',
+          icon: <Database className="h-6 w-6" />,
+          color: 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
         },
         {
-          name: '技术周刊',
-          description: '每周技术精选和资讯分享',
-          url: 'https://newsletter.yourwebsite.com',
-          icon: <BookOpen className="h-6 w-6" />,
-          color: 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+          name: 'Fine-tune 平台',
+          description: '模型微调和实验管理平台',
+          url: 'https://finetune.example.com',
+          icon: <ExternalLink className="h-6 w-6" />,
+          color: 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400'
         }
       ]
     }

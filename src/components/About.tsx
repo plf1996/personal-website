@@ -6,28 +6,28 @@ import { Code, Database, Globe, Smartphone } from 'lucide-react'
 const About = () => {
   const skills = [
     {
-      icon: <Code className="h-8 w-8" />,
-      title: '前端开发',
-      description: '精通 React、Next.js、TypeScript，构建现代化的用户界面',
-      tech: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS']
+      icon: <Database className="h-8 w-8" />,
+      title: '大语言模型',
+      description: '专注于 LLM 训练、微调与应用开发，精通主流模型架构',
+      tech: ['GPT', 'LLaMA', 'BERT', 'LangChain', 'Transformers']
     },
     {
-      icon: <Database className="h-8 w-8" />,
-      title: '后端开发',
-      description: '熟练使用 Node.js、Python，构建高性能的服务端应用',
-      tech: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB']
+      icon: <Code className="h-8 w-8" />,
+      title: 'AI 应用开发',
+      description: '构建智能化的 Web 应用，集成 NLP 和机器学习能力',
+      tech: ['Python', 'FastAPI', 'OpenAI API', 'Vector DB', 'RAG']
     },
     {
       icon: <Globe className="h-8 w-8" />,
-      title: '云服务与DevOps',
-      description: '具备 AWS、Docker、CI/CD 实践经验',
-      tech: ['AWS', 'Docker', 'GitHub Actions', 'Nginx']
+      title: '全栈开发',
+      description: '从前端到后端的完整技术栈，打造高性能应用系统',
+      tech: ['React', 'Next.js', 'Node.js', 'TypeScript', 'PostgreSQL']
     },
     {
       icon: <Smartphone className="h-8 w-8" />,
-      title: '移动开发',
-      description: 'React Native 跨平台移动应用开发经验',
-      tech: ['React Native', 'iOS', 'Android', 'Flutter']
+      title: 'MLOps 与部署',
+      description: '模型部署、监控与优化的完整 MLOps 实践经验',
+      tech: ['Docker', 'Kubernetes', 'MLflow', 'AWS', 'GPU 加速']
     }
   ]
 
@@ -55,13 +55,13 @@ const About = () => {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-            我是一名充满热情的全栈开发者，拥有多年的软件开发经验。我热爱将创意转化为现实，
-            专注于构建高性能、用户友好的Web应用。我相信技术的力量可以改变世界，
-            并不断学习新技术来提升自己的能力。
+            我是一名专注于大语言模型应用开发的全栈工程师，热衷于探索 AI 技术的前沿。
+            我擅长将自然语言处理技术与现代Web开发相结合，构建智能化的应用解决方案。
+            在 LLM 领域，我有丰富的模型训练、微调和应用部署经验。
           </p>
           <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
-            在团队协作中，我善于沟通，乐于分享知识，并始终保持积极的学习态度。
-            我追求代码的优雅和效率，注重用户体验，致力于创造有价值的产品。
+            我相信 AI 将重塑软件开发的未来，致力于打造更加智能、高效的应用系统。
+            在团队协作中，我乐于分享技术见解，推动技术创新，追求代码质量与用户体验的完美平衡。
           </p>
         </motion.div>
 

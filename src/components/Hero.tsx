@@ -51,7 +51,7 @@ const Hero = () => {
           variants={itemVariants}
           className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-8"
         >
-          全栈开发者 | 技术爱好者 | 终身学习者
+          大语言模型工程师 | 全栈开发者 | AI 技术爱好者
         </motion.p>
 
         <motion.div

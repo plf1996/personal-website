@@ -33,9 +33,9 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl font-bold mb-4">MyWebsite</h3>
+            <h3 className="text-xl font-bold mb-4">AI-Lab</h3>
             <p className="text-slate-400 leading-relaxed">
-              持续学习，不断创新。用技术改变世界，用代码创造价值。
+              探索 AI 的边界，构建智能应用。专注于大语言模型技术的创新与实践。
             </p>
           </motion.div>
 
