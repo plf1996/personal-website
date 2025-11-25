@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X, Sun, Moon } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
+import LanguageToggle from './LanguageToggle'
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isDark, setIsDark] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const darkModePreference = window.localStorage.getItem('darkMode')
@@ -29,10 +32,10 @@ const Nav = () => {
   }
 
   const navItems = [
-    { label: '首页', href: '#home' },
-    { label: '关于', href: '#about' },
-    { label: '链接', href: '#links' },
-    { label: '联系', href: '#contact' },
+    { label: t('nav.home'), href: '#home' },
+    { label: t('nav.about'), href: '#about' },
+    { label: t('nav.links'), href: '#links' },
+    { label: t('nav.contact'), href: '#contact' },
   ]
 
   return (
@@ -58,10 +61,11 @@ const Nav = () => {
               <button
                 onClick={toggleDarkMode}
                 className="ml-4 p-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-                aria-label="切换主题"
+                aria-label={t('nav.toggleTheme')}
               >
                 {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </button>
+              <LanguageToggle />
             </div>
           </div>
 
@@ -70,10 +74,11 @@ const Nav = () => {
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-md text-slate-700 dark:text-slate-300"
-              aria-label="切换主题"
+              aria-label={t('nav.toggleTheme')}
             >
               {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
+            <LanguageToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white focus:outline-none"

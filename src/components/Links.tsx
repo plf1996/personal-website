@@ -2,30 +2,33 @@
 
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Twitter, Youtube, BookOpen, Briefcase, Heart, MessageSquare, Database } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Links = () => {
+  const { t } = useLanguage()
+
   const linkCategories = [
     {
-      title: 'AI & 技术社区',
+      title: t('links.aiCommunity'),
       icon: <Github className="h-5 w-5" />,
       links: [
         {
           name: 'GitHub',
-          description: 'AI/LLM 相关开源项目和实验代码',
+          description: t('links.github.desc'),
           url: 'https://github.com/yourusername',
           icon: <Github className="h-6 w-6" />,
           color: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
         },
         {
           name: 'Hugging Face',
-          description: '分享模型、数据集和 AI 应用',
+          description: t('links.huggingface.desc'),
           url: 'https://huggingface.co/yourusername',
           icon: <Heart className="h-6 w-6" />,
           color: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400'
         },
         {
           name: 'arXiv',
-          description: '学术论文和研究方向',
+          description: t('links.arxiv.desc'),
           url: 'https://arxiv.org/a/yourusername',
           icon: <BookOpen className="h-6 w-6" />,
           color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400'
@@ -33,19 +36,19 @@ const Links = () => {
       ]
     },
     {
-      title: '技术博客',
+      title: t('links.techBlog'),
       icon: <BookOpen className="h-5 w-5" />,
       links: [
         {
-          name: '技术博客',
-          description: 'LLM 应用开发实践与思考',
+          name: 'Blog',
+          description: t('links.blog.desc'),
           url: 'https://blog.yourwebsite.com',
           icon: <BookOpen className="h-6 w-6" />,
           color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
         },
         {
-          name: '掘金专栏',
-          description: '中文技术文章分享',
+          name: 'Juejin',
+          description: t('links.juejin.desc'),
           url: 'https://juejin.cn/user/yourid',
           icon: <Briefcase className="h-6 w-6" />,
           color: 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
@@ -53,26 +56,26 @@ const Links = () => {
       ]
     },
     {
-      title: '社交平台',
+      title: t('links.social'),
       icon: <Twitter className="h-5 w-5" />,
       links: [
         {
           name: 'Twitter',
-          description: 'AI 技术动态和行业洞察',
+          description: t('links.twitter.desc'),
           url: 'https://twitter.com/yourusername',
           icon: <Twitter className="h-6 w-6" />,
           color: 'bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400'
         },
         {
           name: 'LinkedIn',
-          description: '职业背景和项目经历',
+          description: t('links.linkedin.desc'),
           url: 'https://linkedin.com/in/yourusername',
           icon: <Briefcase className="h-6 w-6" />,
           color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
         },
         {
-          name: '知乎',
-          description: '中文社区的技术分享',
+          name: 'Zhihu',
+          description: t('links.zhihu.desc'),
           url: 'https://zhihu.com/people/yourid',
           icon: <MessageSquare className="h-6 w-6" />,
           color: 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
@@ -80,26 +83,26 @@ const Links = () => {
       ]
     },
     {
-      title: '项目展示',
+      title: t('links.projects'),
       icon: <ExternalLink className="h-5 w-5" />,
       links: [
         {
-          name: 'AI 聊天助手',
-          description: '基于 LLM 的智能对话系统',
+          name: 'AI Chat Assistant',
+          description: t('links.chat.desc'),
           url: 'https://chat.example.com',
           icon: <MessageSquare className="h-6 w-6" />,
           color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400'
         },
         {
-          name: 'RAG 知识库',
-          description: '企业级检索增强生成系统',
+          name: 'RAG Knowledge Base',
+          description: t('links.rag.desc'),
           url: 'https://rag.example.com',
           icon: <Database className="h-6 w-6" />,
           color: 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
         },
         {
-          name: 'Fine-tune 平台',
-          description: '模型微调和实验管理平台',
+          name: 'Fine-tune Platform',
+          description: t('links.finetune.desc'),
           url: 'https://finetune.example.com',
           icon: <ExternalLink className="h-6 w-6" />,
           color: 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400'
@@ -119,10 +122,10 @@ const Links = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            我的链接
+            {t('links.title')}
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            探索我的数字足迹，了解我在各个平台的动态和分享
+            {t('links.subtitle')}
           </p>
           <div className="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
         </motion.div>
@@ -169,7 +172,7 @@ const Links = () => {
                       {link.description}
                     </p>
                     <div className="mt-4 text-sm text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">
-                      访问链接 →
+                      {t('links.visit')} →
                     </div>
                   </motion.a>
                 ))}
@@ -186,11 +189,11 @@ const Links = () => {
           className="mt-16 text-center"
         >
           <p className="text-slate-500 dark:text-slate-400 text-sm">
-            如果您想要联系我，可以访问{' '}
+            {t('links.contactNote')}{' '}
             <a href="#contact" className="text-blue-600 dark:text-blue-400 hover:underline">
-              联系方式
+              {t('links.contactPage')}
             </a>{' '}
-            页面
+            {t('links.note')}
           </p>
         </motion.div>
       </div>

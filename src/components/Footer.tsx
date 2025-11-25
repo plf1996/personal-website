@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Footer = () => {
+  const { t } = useLanguage()
   const [showScrollTop, setShowScrollTop] = useState(false)
 
   useEffect(() => {
@@ -33,9 +35,9 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl font-bold mb-4">AI-Lab</h3>
+            <h3 className="text-xl font-bold mb-4">{t('footer.brand')}</h3>
             <p className="text-slate-400 leading-relaxed">
-              探索 AI 的边界，构建智能应用。专注于大语言模型技术的创新与实践。
+              {t('footer.desc')}
             </p>
           </motion.div>
 
@@ -46,26 +48,26 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold mb-4">快速链接</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#home" className="text-slate-400 hover:text-white transition-colors">
-                  首页
+                  {t('nav.home')}
                 </a>
               </li>
               <li>
                 <a href="#about" className="text-slate-400 hover:text-white transition-colors">
-                  关于我
+                  {t('nav.about')}
                 </a>
               </li>
               <li>
                 <a href="#links" className="text-slate-400 hover:text-white transition-colors">
-                  我的链接
+                  {t('nav.links')}
                 </a>
               </li>
               <li>
                 <a href="#contact" className="text-slate-400 hover:text-white transition-colors">
-                  联系方式
+                  {t('nav.contact')}
                 </a>
               </li>
             </ul>
@@ -78,7 +80,7 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold mb-4">关注我</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.follow')}</h4>
             <div className="flex space-x-4">
               <a
                 href="https://github.com/yourusername"
@@ -121,7 +123,7 @@ const Footer = () => {
             © {currentYear} Your Name. All rights reserved.
           </p>
           <p className="text-slate-400 text-sm flex items-center">
-            Made with <Heart className="h-4 w-4 mx-2 text-red-500" /> using Next.js & Tailwind CSS
+            {t('footer.copyright')} <Heart className="h-4 w-4 mx-2 text-red-500" /> {t('footer.using')}
           </p>
         </motion.div>
       </div>

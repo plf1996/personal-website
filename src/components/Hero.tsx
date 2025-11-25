@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Hero = () => {
+  const { t } = useLanguage()
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,14 +46,14 @@ const Hero = () => {
           variants={itemVariants}
           className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-4"
         >
-          您好，我是<span className="text-blue-600 dark:text-blue-400">您的名字</span>
+          {t('hero.greeting')}<span className="text-blue-600 dark:text-blue-400">{t('hero.name')}</span>
         </motion.h1>
 
         <motion.p
           variants={itemVariants}
           className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-8"
         >
-          大语言模型工程师 | 全栈开发者 | AI 技术爱好者
+          {t('hero.title')}
         </motion.p>
 
         <motion.div

@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react'
 import { useState } from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Contact = () => {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,27 +24,27 @@ const Contact = () => {
     e.preventDefault()
     // 这里可以添加表单提交逻辑
     console.log('Form submitted:', formData)
-    alert('感谢您的留言！我会尽快回复您。')
+    alert(t('contact.success'))
     setFormData({ name: '', email: '', message: '' })
   }
 
   const contactInfo = [
     {
       icon: <Mail className="h-5 w-5" />,
-      label: '邮箱',
+      label: t('contact.emailLabel'),
       value: 'your.email@example.com',
       href: 'mailto:your.email@example.com'
     },
     {
       icon: <Phone className="h-5 w-5" />,
-      label: '电话',
-      value: '+86 138 0000 0000',
+      label: t('contact.phoneLabel'),
+      value: t('contact.phone'),
       href: 'tel:+8613800000000'
     },
     {
       icon: <MapPin className="h-5 w-5" />,
-      label: '位置',
-      value: '中国，北京',
+      label: t('contact.locationLabel'),
+      value: t('contact.location'),
       href: '#'
     }
   ]
@@ -58,10 +60,10 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            联系我
+            {t('contact.title')}
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            有任何问题或合作意向？欢迎与我联系，期待收到您的消息！
+            {t('contact.subtitle')}
           </p>
           <div className="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
         </motion.div>
@@ -75,7 +77,7 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-6">
-              联系方式
+              {t('contact.info')}
             </h3>
 
             <div className="space-y-6 mb-8">
@@ -107,11 +109,11 @@ const Contact = () => {
               <div className="flex items-center mb-3">
                 <MessageSquare className="h-6 w-6 text-blue-600 dark:text-blue-400 mr-3" />
                 <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
-                  响应时间
+                  {t('contact.response')}
                 </h4>
               </div>
               <p className="text-slate-600 dark:text-slate-400">
-                我通常会在24小时内回复您的邮件。如果事情紧急，请在邮件标题中注明[紧急]。
+                {t('contact.responseDesc')}
               </p>
             </motion.div>
           </motion.div>
@@ -124,7 +126,7 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-6">
-              发送消息
+              {t('contact.sendMsg')}
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -135,7 +137,7 @@ const Contact = () => {
                 viewport={{ once: true }}
               >
                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                  姓名
+                  {t('contact.name')}
                 </label>
                 <input
                   type="text"
@@ -145,7 +147,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-white"
-                  placeholder="您的姓名"
+                  placeholder={t('contact.namePlaceholder')}
                 />
               </motion.div>
 
@@ -156,7 +158,7 @@ const Contact = () => {
                 viewport={{ once: true }}
               >
                 <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                  邮箱
+                  {t('contact.email')}
                 </label>
                 <input
                   type="email"
@@ -166,7 +168,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-white"
-                  placeholder="your@email.com"
+                  placeholder={t('contact.emailPlaceholder')}
                 />
               </motion.div>
 
@@ -177,7 +179,7 @@ const Contact = () => {
                 viewport={{ once: true }}
               >
                 <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                  消息
+                  {t('contact.message')}
                 </label>
                 <textarea
                   id="message"
@@ -187,7 +189,7 @@ const Contact = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-white resize-none"
-                  placeholder="请输入您的消息..."
+                  placeholder={t('contact.messagePlaceholder')}
                 />
               </motion.div>
 
@@ -198,7 +200,7 @@ const Contact = () => {
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center"
               >
                 <Send className="h-5 w-5 mr-2" />
-                发送消息
+                {t('contact.submit')}
               </motion.button>
             </form>
           </motion.div>
