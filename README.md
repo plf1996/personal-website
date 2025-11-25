@@ -1,18 +1,30 @@
-# 个人主页部署指南
+# 个人主页
 
-这是一个基于 Next.js 14 和 Tailwind CSS 构建的个人主页项目，包含个人介绍、链接展示和联系表单等功能。
+一个基于 Next.js 16 和 Tailwind CSS 构建的现代化个人主页项目，专为 LLM 工程师和技术爱好者设计。
 
-## 功能特性
+## ✨ 功能特性
 
-- ✨ 现代化的响应式设计
-- 🌙 深色/浅色主题切换
-- 🎱 流畅的动画效果（Framer Motion）
-- 🔗 分类链接展示
-- 📝 联系表单
-- 🚀 SEO 优化
-- 🐳 Docker 支持
+- 🌍 **国际化支持** - 支持中英文一键切换
+- 🎨 **主题切换** - 深色/浅色模式自由切换
+- 📱 **响应式设计** - 完美适配桌面和移动设备
+- 🎭 **流畅动画** - 使用 Framer Motion 实现优雅的页面动画
+- 🔗 **链接展示** - 分类展示个人社交媒体、博客和项目链接
+- 📝 **联系表单** - 便捷的联系表单
+- 🔐 **信息安全** - 使用环境变量保护个人信息
+- 🚀 **SEO 优化** - 优化搜索引擎收录
+- 🐳 **Docker 支持** - 支持容器化部署
 
-## 本地开发
+## 🛠️ 技术栈
+
+- **框架**: Next.js 16 (App Router)
+- **UI**: React 19 + TypeScript
+- **样式**: Tailwind CSS 3.4
+- **动画**: Framer Motion 12
+- **图标**: Lucide React
+- **国际化**: 自定义语言上下文
+- **部署**: Docker + Nginx
+
+## 📦 快速开始
 
 ### 环境要求
 
@@ -32,12 +44,21 @@ cd personal-website
 npm install
 ```
 
-3. 启动开发服务器
+3. 配置环境变量（重要）
+```bash
+# 复制环境变量模板
+cp .env.local.example .env.local
+
+# 编辑 .env.local 文件，填入您的个人信息
+# 详细说明请参考 ENV_SETUP.md
+```
+
+4. 启动开发服务器
 ```bash
 npm run dev
 ```
 
-4. 访问 [http://localhost:3000](http://localhost:3000)
+5. 访问 [http://localhost:3000](http://localhost:3000)
 
 ### 构建生产版本
 
@@ -143,47 +164,79 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-## 自定义配置
+## ⚙️ 自定义配置
 
-### 修改个人信息
+### 1. 配置个人信息
 
-1. 编辑 `src/components/Hero.tsx`：
-   - 修改姓名和职业描述
-   - 更新社交媒体链接
+**推荐方式：使用环境变量**
+```bash
+# 编辑 .env.local 文件
+NEXT_PUBLIC_PERSONAL_NAME=您的姓名
+NEXT_PUBLIC_PERSONAL_EMAIL=your.email@example.com
+NEXT_PUBLIC_GITHUB_URL=https://github.com/yourusername
+# ... 其他配置
+```
 
-2. 编辑 `src/components/About.tsx`：
-   - 修改个人介绍内容
-   - 更新技能列表
+详细配置说明请参考 [ENV_SETUP.md](./ENV_SETUP.md)
 
-3. 编辑 `src/components/Links.tsx`：
-   - 添加或修改链接分类
-   - 更新每个链接的信息
+### 2. 添加新语言
 
-4. 编辑 `src/components/Contact.tsx`：
-   - 更新联系信息
-   - 修改表单接收邮箱
+项目支持国际化，可以添加更多语言：
 
-### 添加新链接
+1. 在 `src/contexts/LanguageContext.tsx` 中的 `translations` 对象添加新语言
+2. 更新 `Language` 类型定义
+3. 在语言切换组件中添加新语言选项
 
-在 `src/components/Links.tsx` 中的 `linkCategories` 数组中添加新的链接：
+### 3. 自定义主题
 
-```typescript
-{
-  title: '新分类',
-  icon: <YourIcon className="h-5 w-5" />,
-  links: [
-    {
-      name: '链接名称',
-      description: '链接描述',
-      url: 'https://example.com',
-      icon: <LinkIcon className="h-6 w-6" />,
-      color: 'bg-xxx-100 dark:bg-xxx-900/30 text-xxx-600 dark:text-xxx-400'
-    }
-  ]
+主题使用 CSS 变量，可以在 `src/app/globals.css` 中自定义：
+
+```css
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  /* 添加更多自定义颜色 */
 }
 ```
 
-## 维护和更新
+### 4. 修改页面内容
+
+- **导航栏**: `src/components/Nav.tsx`
+- **首页**: `src/components/Hero.tsx`
+- **关于**: `src/components/About.tsx`
+- **链接**: `src/components/Links.tsx`
+- **联系**: `src/components/Contact.tsx`
+- **页脚**: `src/components/Footer.tsx`
+
+## 📋 项目结构
+
+```
+personal-website/
+├── src/
+│   ├── app/                  # Next.js App Router
+│   │   ├── layout.tsx        # 根布局
+│   │   ├── page.tsx          # 主页面
+│   │   └── globals.css       # 全局样式
+│   ├── components/           # React 组件
+│   │   ├── Hero.tsx          # 首页展示
+│   │   ├── About.tsx         # 关于我
+│   │   ├── Links.tsx         # 链接展示
+│   │   ├── Contact.tsx       # 联系表单
+│   │   ├── Nav.tsx           # 导航栏
+│   │   ├── Footer.tsx        # 页脚
+│   │   └── LanguageToggle.tsx # 语言切换
+│   ├── contexts/             # React Context
+│   │   └── LanguageContext.tsx # 国际化上下文
+│   └── config/               # 配置文件
+│       └── env.ts            # 环境变量配置
+├── .env.local.example        # 环境变量模板
+├── ENV_SETUP.md             # 环境变量说明
+├── Dockerfile               # Docker 配置
+├── docker-compose.yml       # Docker Compose
+└── nginx.conf              # Nginx 配置
+```
+
+## 🔄 维护和更新
 
 ### 更新内容
 
@@ -214,9 +267,14 @@ docker-compose logs -f
 pm2 logs personal-website
 ```
 
-## 常见问题
+## ❓ 常见问题
 
-### 1. 端口被占用
+### 1. 环境变量不生效
+- 确保文件名为 `.env.local`（不是 `.env`）
+- 变量名必须以 `NEXT_PUBLIC_` 开头
+- 修改后需要重启开发服务器
+
+### 2. 端口被占用
 ```bash
 # 查看占用端口的进程
 sudo netstat -tulpn | grep :3000
@@ -224,28 +282,46 @@ sudo netstat -tulpn | grep :3000
 sudo kill -9 [PID]
 ```
 
-### 2. SSL 证书问题
+### 3. SSL 证书问题
 使用 Certbot 获取免费证书：
 ```bash
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
 ```
 
-### 3. 性能优化
-- 启用 Gzip 压缩（已配置）
-- 配置静态资源缓存（已配置）
-- 使用 CDN 加速
-- 启用 HTTP/2（已配置）
+### 4. 生产环境配置
+- Vercel: 在项目设置中添加 Environment Variables
+- Netlify: 在 Site settings > Build & deploy > Environment 中添加
+- Docker: 在 docker-compose.yml 中配置环境变量
 
-## 技术栈
+## 🌟 部署建议
 
-- **框架**: Next.js 14 (App Router)
-- **样式**: Tailwind CSS
-- **动画**: Framer Motion
-- **图标**: Lucide React
-- **部署**: Docker + Nginx
-- **语言**: TypeScript
+### 推荐部署平台
 
-## 许可证
+1. **Vercel**（推荐）
+   - 自动部署
+   - 内置环境变量管理
+   - 全球 CDN 加速
+   - 自带 HTTPS
+
+2. **Netlify**
+   - 简单易用
+   - 持续部署
+   - 表单处理
+
+3. **自建服务器**
+   - 使用 Docker 部署
+   - 更高的控制权
+   - 需要自己维护
+
+## 📄 许可证
 
 MIT License
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+---
+
+**提示**: 首次使用前请务必阅读 [ENV_SETUP.md](./ENV_SETUP.md) 配置您的个人信息。
