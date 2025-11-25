@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { personalConfig } from '@/config/env'
 
 const Hero = () => {
   const { t } = useLanguage()
@@ -38,7 +39,7 @@ const Hero = () => {
           className="mb-8"
         >
           <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-5xl font-bold shadow-xl">
-            您
+            {personalConfig.name[0]}
           </div>
         </motion.div>
 
@@ -46,7 +47,7 @@ const Hero = () => {
           variants={itemVariants}
           className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-4"
         >
-          {t('hero.greeting')}<span className="text-blue-600 dark:text-blue-400">{t('hero.name')}</span>
+          {t('hero.greeting')}<span className="text-blue-600 dark:text-blue-400">{personalConfig.name}</span>
         </motion.h1>
 
         <motion.p
@@ -61,7 +62,7 @@ const Hero = () => {
           className="flex justify-center space-x-6 mb-12"
         >
           <a
-            href="https://github.com/yourusername"
+            href={personalConfig.github}
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
@@ -70,7 +71,7 @@ const Hero = () => {
             <Github className="h-6 w-6 text-slate-700 dark:text-slate-300" />
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href={personalConfig.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
@@ -79,7 +80,7 @@ const Hero = () => {
             <Linkedin className="h-6 w-6 text-slate-700 dark:text-slate-300" />
           </a>
           <a
-            href="mailto:your.email@example.com"
+            href={`mailto:${personalConfig.email}`}
             className="p-3 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
             aria-label="Email"
           >

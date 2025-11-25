@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react'
 import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { personalConfig } from '@/config/env'
 
 const Contact = () => {
   const { t } = useLanguage()
@@ -32,14 +33,14 @@ const Contact = () => {
     {
       icon: <Mail className="h-5 w-5" />,
       label: t('contact.emailLabel'),
-      value: 'your.email@example.com',
-      href: 'mailto:your.email@example.com'
+      value: personalConfig.email,
+      href: `mailto:${personalConfig.email}`
     },
     {
       icon: <Phone className="h-5 w-5" />,
       label: t('contact.phoneLabel'),
-      value: t('contact.phone'),
-      href: 'tel:+8613800000000'
+      value: personalConfig.phone,
+      href: `tel:${personalConfig.phone}`
     },
     {
       icon: <MapPin className="h-5 w-5" />,

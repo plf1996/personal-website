@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { personalConfig } from '@/config/env'
 
 const Footer = () => {
   const { t } = useLanguage()
@@ -83,7 +84,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">{t('footer.follow')}</h4>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/yourusername"
+                href={personalConfig.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"
@@ -92,7 +93,7 @@ const Footer = () => {
                 <Github className="h-5 w-5" />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href={personalConfig.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"
@@ -101,7 +102,7 @@ const Footer = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="mailto:your.email@example.com"
+                href={`mailto:${personalConfig.email}`}
                 className="p-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"
                 aria-label="Email"
               >
@@ -120,7 +121,7 @@ const Footer = () => {
           className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center"
         >
           <p className="text-slate-400 text-sm mb-4 md:mb-0">
-            © {currentYear} Your Name. All rights reserved.
+            © {currentYear} {personalConfig.name}. All rights reserved.
           </p>
           <p className="text-slate-400 text-sm flex items-center">
             {t('footer.copyright')} <Heart className="h-4 w-4 mx-2 text-red-500" /> {t('footer.using')}

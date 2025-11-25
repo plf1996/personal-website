@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Twitter, Youtube, BookOpen, Briefcase, Heart, MessageSquare, Database } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { personalConfig } from '@/config/env'
 
 const Links = () => {
   const { t } = useLanguage()
@@ -15,21 +16,21 @@ const Links = () => {
         {
           name: 'GitHub',
           description: t('links.github.desc'),
-          url: 'https://github.com/yourusername',
+          url: personalConfig.github,
           icon: <Github className="h-6 w-6" />,
           color: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
         },
         {
           name: 'Hugging Face',
           description: t('links.huggingface.desc'),
-          url: 'https://huggingface.co/yourusername',
+          url: personalConfig.huggingface,
           icon: <Heart className="h-6 w-6" />,
           color: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400'
         },
         {
           name: 'arXiv',
           description: t('links.arxiv.desc'),
-          url: 'https://arxiv.org/a/yourusername',
+          url: personalConfig.arxiv,
           icon: <BookOpen className="h-6 w-6" />,
           color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400'
         }
@@ -42,14 +43,14 @@ const Links = () => {
         {
           name: 'Blog',
           description: t('links.blog.desc'),
-          url: 'https://blog.yourwebsite.com',
+          url: personalConfig.blog,
           icon: <BookOpen className="h-6 w-6" />,
           color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
         },
         {
           name: 'Juejin',
           description: t('links.juejin.desc'),
-          url: 'https://juejin.cn/user/yourid',
+          url: personalConfig.juejin,
           icon: <Briefcase className="h-6 w-6" />,
           color: 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
         }
@@ -62,21 +63,21 @@ const Links = () => {
         {
           name: 'Twitter',
           description: t('links.twitter.desc'),
-          url: 'https://twitter.com/yourusername',
+          url: personalConfig.twitter,
           icon: <Twitter className="h-6 w-6" />,
           color: 'bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400'
         },
         {
           name: 'LinkedIn',
           description: t('links.linkedin.desc'),
-          url: 'https://linkedin.com/in/yourusername',
+          url: personalConfig.linkedin,
           icon: <Briefcase className="h-6 w-6" />,
           color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
         },
         {
           name: 'Zhihu',
           description: t('links.zhihu.desc'),
-          url: 'https://zhihu.com/people/yourid',
+          url: personalConfig.zhihu,
           icon: <MessageSquare className="h-6 w-6" />,
           color: 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
         }
@@ -89,21 +90,21 @@ const Links = () => {
         {
           name: 'AI Chat Assistant',
           description: t('links.chat.desc'),
-          url: 'https://chat.example.com',
+          url: personalConfig.chat,
           icon: <MessageSquare className="h-6 w-6" />,
           color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400'
         },
         {
           name: 'RAG Knowledge Base',
           description: t('links.rag.desc'),
-          url: 'https://rag.example.com',
+          url: personalConfig.rag,
           icon: <Database className="h-6 w-6" />,
           color: 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
         },
         {
           name: 'Fine-tune Platform',
           description: t('links.finetune.desc'),
-          url: 'https://finetune.example.com',
+          url: personalConfig.finetune,
           icon: <ExternalLink className="h-6 w-6" />,
           color: 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400'
         }
