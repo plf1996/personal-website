@@ -8,6 +8,7 @@
 - 🎨 **主题切换** - 深色/浅色模式自由切换
 - 📱 **响应式设计** - 完美适配桌面和移动设备
 - 🎭 **流畅动画** - 使用 Framer Motion 实现优雅的页面动画
+- 🎬 **动态背景视频** - 类似字节跳动官网的活力背景效果
 - 🔗 **链接展示** - 分类展示个人社交媒体、博客和项目链接
 - 📝 **联系表单** - 便捷的联系表单
 - 🔐 **信息安全** - 使用环境变量保护个人信息
@@ -166,7 +167,41 @@ sudo systemctl reload nginx
 
 ## ⚙️ 自定义配置
 
-### 1. 配置个人信息
+### 1. 动态背景视频设置
+
+**背景视频功能特性**：
+- 🎬 **智能视频加载** - 多级备用视频源，自动降级机制
+- 📱 **移动端优化** - 自动检测设备，降级到CSS动画背景
+- 🎨 **视觉优化** - 毛玻璃效果、动态光效、渐变覆盖
+- ⚡ **性能优化** - 懒加载、硬件加速、内存优化
+
+**添加自己的背景视频**：
+```bash
+# 推荐视频规格：
+- 分辨率：1920x1080 或更高
+- 时长：15-30秒循环
+- 格式：MP4 (H.264编码)
+- 文件大小：< 20MB
+- 内容：科技感、活力动感
+
+# 放置视频文件
+cp your-video.mp4 public/videos/background.mp4
+```
+
+**视频文件结构**：
+```
+public/videos/
+├── background.mp4         # 主背景视频
+├── background-fallback.mp4  # 备用视频
+└── background-mobile.mp4   # 移动端优化版本（可选）
+```
+
+**自定义视觉效果**：
+- 调整 `src/components/BackgroundVideo.tsx` 中的覆盖层透明度
+- 修改各组件的颜色和透明度设置
+- 更新 `tailwind.config.ts` 中的动画参数
+
+### 2. 配置个人信息
 
 **推荐方式：使用环境变量**
 ```bash
@@ -179,7 +214,7 @@ NEXT_PUBLIC_GITHUB_URL=https://github.com/yourusername
 
 详细配置说明请参考 [ENV_SETUP.md](./ENV_SETUP.md)
 
-### 2. 添加新语言
+### 3. 添加新语言
 
 项目支持国际化，可以添加更多语言：
 
@@ -187,7 +222,7 @@ NEXT_PUBLIC_GITHUB_URL=https://github.com/yourusername
 2. 更新 `Language` 类型定义
 3. 在语言切换组件中添加新语言选项
 
-### 3. 自定义主题
+### 4. 自定义主题
 
 主题使用 CSS 变量，可以在 `src/app/globals.css` 中自定义：
 
@@ -199,7 +234,7 @@ NEXT_PUBLIC_GITHUB_URL=https://github.com/yourusername
 }
 ```
 
-### 4. 修改页面内容
+### 5. 修改页面内容
 
 - **导航栏**: `src/components/Nav.tsx`
 - **首页**: `src/components/Hero.tsx`
@@ -218,6 +253,7 @@ personal-website/
 │   │   ├── page.tsx          # 主页面
 │   │   └── globals.css       # 全局样式
 │   ├── components/           # React 组件
+│   │   ├── BackgroundVideo.tsx # 背景视频组件
 │   │   ├── Hero.tsx          # 首页展示
 │   │   ├── About.tsx         # 关于我
 │   │   ├── Links.tsx         # 链接展示
@@ -233,7 +269,10 @@ personal-website/
 ├── ENV_SETUP.md             # 环境变量说明
 ├── Dockerfile               # Docker 配置
 ├── docker-compose.yml       # Docker Compose
-└── nginx.conf              # Nginx 配置
+├── nginx.conf              # Nginx 配置
+├── public/videos/           # 背景视频资源目录
+└── scripts/                # 工具脚本
+    └── download-sample-video.js # 视频下载工具
 ```
 
 ## 🔄 维护和更新
@@ -269,12 +308,18 @@ pm2 logs personal-website
 
 ## ❓ 常见问题
 
-### 1. 环境变量不生效
+### 1. 背景视频相关问题
+- **视频无法播放**：检查视频文件路径、格式支持，查看浏览器控制台
+- **性能问题**：降低视频分辨率、减少动画复杂度、启用硬件加速
+- **移动端显示异常**：确认移动设备检测正常，检查CSS动画效果
+- **文字可读性差**：调整覆盖层透明度、增强毛玻璃效果
+
+### 2. 环境变量不生效
 - 确保文件名为 `.env.local`（不是 `.env`）
 - 变量名必须以 `NEXT_PUBLIC_` 开头
 - 修改后需要重启开发服务器
 
-### 2. 端口被占用
+### 3. 端口被占用
 ```bash
 # 查看占用端口的进程
 sudo netstat -tulpn | grep :3000
@@ -282,14 +327,14 @@ sudo netstat -tulpn | grep :3000
 sudo kill -9 [PID]
 ```
 
-### 3. SSL 证书问题
+### 4. SSL 证书问题
 使用 Certbot 获取免费证书：
 ```bash
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
 ```
 
-### 4. 生产环境配置
+### 5. 生产环境配置
 - Vercel: 在项目设置中添加 Environment Variables
 - Netlify: 在 Site settings > Build & deploy > Environment 中添加
 - Docker: 在 docker-compose.yml 中配置环境变量

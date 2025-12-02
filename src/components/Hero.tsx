@@ -38,21 +38,21 @@ const Hero = () => {
           variants={itemVariants}
           className="mb-8"
         >
-          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-5xl font-bold shadow-xl">
+          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white text-5xl font-bold shadow-2xl border border-white/20">
             {personalConfig.name[0]}
           </div>
         </motion.div>
 
         <motion.h1
           variants={itemVariants}
-          className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-4"
+          className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg"
         >
-          {t('hero.greeting')}<span className="text-blue-600 dark:text-blue-400">{personalConfig.name}</span>
+          {t('hero.greeting')}<span className="text-blue-300">{personalConfig.name}</span>
         </motion.h1>
 
         <motion.p
           variants={itemVariants}
-          className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-8"
+          className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md"
         >
           {t('hero.title')}
         </motion.p>
@@ -65,26 +65,26 @@ const Hero = () => {
             href={personalConfig.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+            className="p-3 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors border border-white/20"
             aria-label="GitHub"
           >
-            <Github className="h-6 w-6 text-slate-700 dark:text-slate-300" />
+            <Github className="h-6 w-6 text-white" />
           </a>
           <a
             href={personalConfig.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+            className="p-3 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors border border-white/20"
             aria-label="LinkedIn"
           >
-            <Linkedin className="h-6 w-6 text-slate-700 dark:text-slate-300" />
+            <Linkedin className="h-6 w-6 text-white" />
           </a>
           <a
             href={`mailto:${personalConfig.email}`}
-            className="p-3 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+            className="p-3 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors border border-white/20"
             aria-label="Email"
           >
-            <Mail className="h-6 w-6 text-slate-700 dark:text-slate-300" />
+            <Mail className="h-6 w-6 text-white" />
           </a>
         </motion.div>
 
@@ -92,7 +92,7 @@ const Hero = () => {
           variants={itemVariants}
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="text-slate-500 dark:text-slate-400"
+          className="text-white/70"
         >
           <ArrowDown className="h-8 w-8 mx-auto" />
         </motion.div>

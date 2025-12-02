@@ -14,7 +14,7 @@ const LanguageToggle = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="p-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors flex items-center space-x-2"
+      className="p-2 rounded-md text-white/90 hover:text-white transition-colors flex items-center space-x-2"
       aria-label={t('nav.toggleLang')}
       title={t('nav.toggleLang')}
     >

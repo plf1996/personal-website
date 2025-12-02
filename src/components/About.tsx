@@ -35,7 +35,7 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="py-20 px-4 bg-white dark:bg-slate-800">
+    <section id="about" className="py-20 px-4 bg-black/30 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,10 +44,10 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
             {t('about.title')}
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+          <div className="w-20 h-1 bg-blue-400 mx-auto"></div>
         </motion.div>
 
         <motion.div
@@ -57,10 +57,10 @@ const About = () => {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+          <p className="text-lg text-white/90 leading-relaxed drop-shadow-md">
             {t('about.intro1')} {t('about.intro2')} {t('about.intro3')}
           </p>
-          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
+          <p className="text-lg text-white/90 leading-relaxed mt-4 drop-shadow-md">
             {t('about.intro4')} {t('about.intro5')}
           </p>
         </motion.div>
@@ -73,22 +73,22 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl hover:shadow-lg transition-shadow"
+              className="bg-white/10 backdrop-blur-md p-6 rounded-xl hover:bg-white/20 hover:shadow-2xl transition-all border border-white/20"
             >
-              <div className="text-blue-600 dark:text-blue-400 mb-4">
+              <div className="text-blue-300 mb-4">
                 {skill.icon}
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
+              <h3 className="text-xl font-semibold text-white mb-2">
                 {skill.title}
               </h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-4 text-sm">
+              <p className="text-white/80 mb-4 text-sm">
                 {skill.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {skill.tech.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-xs"
+                    className="px-3 py-1 bg-blue-500/20 text-blue-200 rounded-full text-xs border border-blue-400/30"
                   >
                     {tech}
                   </span>

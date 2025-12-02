@@ -51,7 +51,7 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="py-20 px-4 bg-white dark:bg-slate-800">
+    <section id="contact" className="py-20 px-4 bg-black/40 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,13 +60,13 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
             {t('contact.title')}
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 max-w-2xl mx-auto drop-shadow-md">
             {t('contact.subtitle')}
           </p>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+          <div className="w-20 h-1 bg-blue-400 mx-auto mt-4"></div>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -77,7 +77,7 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-6">
+            <h3 className="text-2xl font-semibold text-white mb-6">
               {t('contact.info')}
             </h3>
 
@@ -86,15 +86,15 @@ const Contact = () => {
                 <motion.a
                   key={index}
                   href={info.href}
-                  className="flex items-center p-4 bg-slate-50 dark:bg-slate-900 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors group"
+                  className="flex items-center p-4 bg-white/10 backdrop-blur-md rounded-lg hover:bg-white/20 transition-colors group border border-white/20"
                   whileHover={{ x: 5 }}
                 >
-                  <div className="text-blue-600 dark:text-blue-400 mr-4">
+                  <div className="text-blue-300 mr-4">
                     {info.icon}
                   </div>
                   <div>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">{info.label}</p>
-                    <p className="text-slate-900 dark:text-white font-medium">{info.value}</p>
+                    <p className="text-sm text-white/70">{info.label}</p>
+                    <p className="text-white font-medium">{info.value}</p>
                   </div>
                 </motion.a>
               ))}
@@ -105,15 +105,15 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-6 rounded-xl"
+              className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-md p-6 rounded-xl border border-white/20"
             >
               <div className="flex items-center mb-3">
-                <MessageSquare className="h-6 w-6 text-blue-600 dark:text-blue-400 mr-3" />
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                <MessageSquare className="h-6 w-6 text-blue-300 mr-3" />
+                <h4 className="text-lg font-semibold text-white">
                   {t('contact.response')}
                 </h4>
               </div>
-              <p className="text-slate-600 dark:text-slate-400">
+              <p className="text-white/90">
                 {t('contact.responseDesc')}
               </p>
             </motion.div>
@@ -126,7 +126,7 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-6">
+            <h3 className="text-2xl font-semibold text-white mb-6">
               {t('contact.sendMsg')}
             </h3>
 
@@ -137,7 +137,7 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-white/90 mb-2">
                   {t('contact.name')}
                 </label>
                 <input
@@ -147,7 +147,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-white"
+                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all text-white placeholder-white/50"
                   placeholder={t('contact.namePlaceholder')}
                 />
               </motion.div>
@@ -158,7 +158,7 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-white/90 mb-2">
                   {t('contact.email')}
                 </label>
                 <input
@@ -168,7 +168,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-white"
+                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all text-white placeholder-white/50"
                   placeholder={t('contact.emailPlaceholder')}
                 />
               </motion.div>
@@ -179,7 +179,7 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
               >
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-white/90 mb-2">
                   {t('contact.message')}
                 </label>
                 <textarea
@@ -189,7 +189,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-white resize-none"
+                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all text-white resize-none placeholder-white/50"
                   placeholder={t('contact.messagePlaceholder')}
                 />
               </motion.div>
@@ -198,7 +198,7 @@ const Contact = () => {
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center"
+                className="w-full bg-blue-500/80 hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center backdrop-blur-sm border border-white/20"
               >
                 <Send className="h-5 w-5 mr-2" />
                 {t('contact.submit')}

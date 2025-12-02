@@ -113,7 +113,7 @@ const Links = () => {
   ]
 
   return (
-    <section id="links" className="py-20 px-4 bg-slate-50 dark:bg-slate-900">
+    <section id="links" className="py-20 px-4 bg-black/20 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -122,13 +122,13 @@ const Links = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
             {t('links.title')}
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 max-w-2xl mx-auto drop-shadow-md">
             {t('links.subtitle')}
           </p>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+          <div className="w-20 h-1 bg-blue-400 mx-auto mt-4"></div>
         </motion.div>
 
         <div className="space-y-12">
@@ -141,10 +141,10 @@ const Links = () => {
               viewport={{ once: true }}
             >
               <div className="flex items-center mb-6">
-                <div className="text-slate-700 dark:text-slate-300 mr-3">
+                <div className="text-white/90 mr-3">
                   {category.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+                <h3 className="text-xl font-semibold text-white">
                   {category.title}
                 </h3>
               </div>
@@ -158,21 +158,21 @@ const Links = () => {
                     rel="noopener noreferrer"
                     whileHover={{ y: -5 }}
                     whileTap={{ scale: 0.98 }}
-                    className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group"
+                    className="bg-white/10 backdrop-blur-md p-6 rounded-xl hover:bg-white/20 hover:shadow-2xl transition-all duration-300 group border border-white/20"
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div className={`${link.color} p-3 rounded-lg group-hover:scale-110 transition-transform`}>
                         {link.icon}
                       </div>
-                      <ExternalLink className="h-5 w-5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors" />
+                      <ExternalLink className="h-5 w-5 text-white/60 group-hover:text-white/90 transition-colors" />
                     </div>
-                    <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                    <h4 className="text-lg font-semibold text-white mb-2">
                       {link.name}
                     </h4>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                    <p className="text-white/80 text-sm leading-relaxed">
                       {link.description}
                     </p>
-                    <div className="mt-4 text-sm text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">
+                    <div className="mt-4 text-sm text-blue-300 font-medium group-hover:text-blue-200">
                       {t('links.visit')} →
                     </div>
                   </motion.a>
@@ -189,9 +189,9 @@ const Links = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <p className="text-slate-500 dark:text-slate-400 text-sm">
+          <p className="text-white/70 text-sm">
             {t('links.contactNote')}{' '}
-            <a href="#contact" className="text-blue-600 dark:text-blue-400 hover:underline">
+            <a href="#contact" className="text-blue-300 hover:text-blue-200 hover:underline">
               {t('links.contactPage')}
             </a>{' '}
             {t('links.note')}
