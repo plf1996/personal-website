@@ -1,5 +1,5 @@
 # 使用官方 Node.js 运行时作为基础镜像
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 
 # 安装依赖阶段
 FROM base AS deps
@@ -35,6 +35,9 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# 确保 nextjs 用户有权限访问 public 目录
+RUN chown -R nextjs:nodejs /app/public
 
 USER nextjs
 
