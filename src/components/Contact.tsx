@@ -2,33 +2,97 @@
 
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { personalConfig } from '@/config/env'
 
+/**
+ * 表单数据类型
+ */
+interface FormData {
+  name: string
+  email: string
+  message: string
+}
+
+/**
+ * 提交状态类型
+ */
+interface SubmitStatus {
+  type: 'success' | 'error' | null
+  message: string
+}
+
+/**
+ * 联系组件
+ * 功能：
+ * - 显示联系信息
+ * - 表单提交（带API验证）
+ * - 加载状态和错误处理
+ * - 响应式设计
+ */
 const Contact = () => {
   const { t } = useLanguage()
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: ''
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({ 
+    type: null, 
+    message: '' 
+  })
+
+  // 处理表单输入变化 - 使用 useCallback优化
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
       [e.target.name]: e.target.value
-    })
-  }
+    }))
+    
+    // 清除之前的提交状态
+    if (submitStatus.type) {
+      setSubmitStatus({ type: null, message: '' })
+    }
+  }, [submitStatus.type])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // 处理表单提交 - 使用 useCallback优化
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
-    // 这里可以添加表单提交逻辑
-    console.log('Form submitted:', formData)
-    alert(t('contact.success'))
-    setFormData({ name: '', email: '', message: '' })
-  }
+    setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: '' })
 
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || '提交失败')
+      }
+
+      setSubmitStatus({ type: 'success', message: data.message || t('contact.success') })
+      setFormData({ name: '', email: '', message: '' })
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : '提交失败，请稍后重试'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }, [formData, t])
+
+  // 联系信息配置 - 使用 useMemo缓存
   const contactInfo = [
     {
       icon: <Mail className="h-5 w-5" />,
@@ -194,14 +258,43 @@ const Contact = () => {
                 />
               </motion.div>
 
+              {/* 提交状态消息 */}
+              {submitStatus.type && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`mb-6 p-4 rounded-lg border ${
+                    submitStatus.type === 'success'
+                      ? 'bg-green-500/20 border-green-500 text-green-300'
+                      : 'bg-red-500/20 border-red-500 text-red-300'
+                  }`}
+                >
+                  <p className="text-sm font-medium">{submitStatus.message}</p>
+                </motion.div>
+              )}
+
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-blue-500/80 hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center backdrop-blur-sm border border-white/20"
+                disabled={isSubmitting}
+                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                className={`w-full font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center backdrop-blur-sm border border-white/20 ${
+                  isSubmitting
+                    ? 'bg-blue-500/50 cursor-not-allowed opacity-70'
+                    : 'bg-blue-500/80 hover:bg-blue-500 text-white'
+                }`}
               >
-                <Send className="h-5 w-5 mr-2" />
-                {t('contact.submit')}
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+                    {t('contact.submit')}...
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-5 w-5 mr-2" />
+                    {t('contact.submit')}
+                  </>
+                )}
               </motion.button>
             </form>
           </motion.div>

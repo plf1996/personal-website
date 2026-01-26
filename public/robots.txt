@@ -1,0 +1,13 @@
+# Robots.txt - 告诉搜索引擎哪些页面可以抓取
+User-agent: *
+Allow: /
+
+# 禁止抓取API路由
+Disallow: /api/
+
+# 禁止抓取开发文件
+Disallow: /.next/
+Disallow: /node_modules/
+
+# 站点地图位置
+Sitemap: https://yourdomain.com/sitemap.xml
